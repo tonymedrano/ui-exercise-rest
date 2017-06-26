@@ -30,9 +30,14 @@ export class UserService {
 
 	//. crea usuario.
 	createUser(user:any):Observable<Array<any>> {
+        console.log(user)
+        let body = JSON.stringify({
+            name: user.name,
+            birthdate: user.birthdate.toJSON()
+        });
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.put('http://hello-world.innocv.com/api/user/create', user, options)
+        return this.http.post('http://hello-world.innocv.com/api/user/create', body, options)
           .map((res:Response) => {
                 let user:Array<any> = res.json();
                 return user;
@@ -41,24 +46,28 @@ export class UserService {
 
 	//. actualiza usuario.
     updateUser(user:any):Observable<Array<any>> {
-        let body= JSON.stringify({
+        let body = JSON.stringify({
             user: user.name,
             birthdate: user.birthdate
         });
+        console.log(body)
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.put('http://hello-world.innocv.com/api/user/update', user, options)
+        return this.http.put('http://hello-world.innocv.com/api/user/update', body, options)
           .map((res:Response) => {
-                let user:Array<any> = res.json();
-                return user;
+                let users:Array<any> = res.json();
+                return users;
         }).catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
 	//. elimina usuario (especificado en su id).
-	deleteUser(userId:number):void {
+	deleteUser(id:number):Observable<Array<any>> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        this.http.get(`http://hello-world.innocv.com/api/user/remove/${userId}`, options)
-          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        return this.http.delete(`http://hello-world.innocv.com/api/user/remove/${id}`, "delete")
+          .map((res:Response) => {
+                let users:Array<any> = res.json();
+                return users;
+        }).catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 }

@@ -5,7 +5,7 @@ import { DatePipe } from '@angular/common';
 export class BirthDatePipe implements PipeTransform {
     transform(value: string): any {
         var datePipe = new DatePipe("es");
-        value = datePipe.transform(value, 'yMMMMEEEEd');
+        value = datePipe.transform(value, 'ddMMyyyy');
         return value;
     }
 }
