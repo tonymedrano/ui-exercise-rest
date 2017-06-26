@@ -33,7 +33,7 @@ export class UserService {
         console.log(user)
         let body = JSON.stringify({
             name: user.name,
-            birthdate: user.birthdate.toJSON()
+            birthdate: user.birthdate
         });
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
@@ -50,7 +50,6 @@ export class UserService {
             user: user.name,
             birthdate: user.birthdate
         });
-        console.log(body)
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         return this.http.put('http://hello-world.innocv.com/api/user/update', body, options)
@@ -64,7 +63,7 @@ export class UserService {
 	deleteUser(id:number):Observable<Array<any>> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.delete(`http://hello-world.innocv.com/api/user/remove/${id}`, "delete")
+        return this.http.delete(`http://hello-world.innocv.com/api/user/remove/${id}`, options)
           .map((res:Response) => {
                 let users:Array<any> = res.json();
                 return users;

@@ -3,20 +3,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { slideInOutAnimation } from '../animations/index';
 import { UserService, User } from '../service/index';
-
+ 
 @Component({
-   // moduleId: module.id.toString(),
     templateUrl: 'user-add-edit.component.html',
     styles:[`
-    .side-form {
-    width: 600px;
-    height: 400px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    margin-top:40px;
-}
-`],
+        .side-form {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            margin-top:40px;
+        }
+    `],
     animations: [slideInOutAnimation],
     host: { '[@slideInOutAnimation]': '' }
 })
@@ -41,16 +40,9 @@ export class UserAddEditComponent implements OnInit {
     }
 
     saveUser(user:any) {
-        // save user
         this.userService.createUser(user).subscribe((user:Array<User>) => {
 			this.user = user;
             this.router.navigate(['users']);
 		});
-        console.log(user)
-        // redirect to users view
-        
-
-        // publish event so list controller can refresh
-       // this.pubSubService.publish('products-updated');
     }
 }
