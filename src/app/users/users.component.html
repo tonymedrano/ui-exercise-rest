@@ -1,0 +1,26 @@
+<div class="users">
+    <div class="table-title">
+        <h3>UI Exercise Users</h3>
+        <a routerLink="add" class="btn btn-default">Add Product</a>
+    </div>
+    <table class="table-fill">
+        <thead>
+            <tr>
+                <th class="text-left">Id</th>
+                <th class="text-left">Name</th>
+                <th class="text-left">Date of Birthday</th>
+                <th class="text-left"></th>
+                <th class="text-left"></th>
+            </tr>
+        </thead>
+        <tbody class="table-hover">
+            <tr *ngFor="let user of users">
+                <td class="text-left">{{user.id}}</td>
+                <td class="text-left"><a [routerLink]="['edit', user.id]">{{user.name}}</a></td>
+                <td class="text-left">{{user.birthdate | date}}</td>
+                <td><button class="btn btn-primary">Editar</button></td>
+                <td><button (click)="delete(user.id)" class="btn btn-danger">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
