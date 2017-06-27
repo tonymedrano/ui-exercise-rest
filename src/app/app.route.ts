@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UsersComponent } from './users/users.component';
-import { UserAddEditComponent } from './users/user-add-edit.component';
+import { UsersComponent } from './users/index';
+import { UserEditComponent } from './user-edit/index';
 
 const routes: Routes = [
     { path: '', redirectTo: 'users', pathMatch: 'full' },
     {
         path: 'users', component: UsersComponent },
-        { path: 'users/add', component: UserAddEditComponent },
-            { path: 'users/edit/:id', component: UserAddEditComponent },
+        { path: 'users/add', component: UserEditComponent },
+            { path: 'users/edit/:id', component: UserEditComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: 'users' }
@@ -21,4 +21,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routedComponents = [UsersComponent, UserAddEditComponent];
+export const routedComponents = [UsersComponent, UserEditComponent];

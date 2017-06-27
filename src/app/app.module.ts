@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 //. componentes de applicación
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { UserService, User } from './service/index';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ToastModule.forRoot(),
     AppRoutingModule
   ],
   providers: [UserService],

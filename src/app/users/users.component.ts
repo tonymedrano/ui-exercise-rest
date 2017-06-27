@@ -24,24 +24,18 @@ export class UsersComponent implements OnInit {
 
 	ngOnInit() {
 		this.users = [];
-        this.loadUsers();
+		this.subscription = this.userService.getUserAll().subscribe((users:Array<User>) => {
+			this.users = users;
+		});
 	}
 
 	ngOnDestroy() {
-        // unsubscribe to ensure no memory leaks
         this.subscription.unsubscribe();
     }
 
 	delete(id: number) {
         this.userService.deleteUser(id).subscribe((users:Array<User>) => {
 			this.users = users;
-			this.loadUsers();
 		});
     }
-
-	loadUsers(){
-		this.subscription = this.userService.getUserAll().subscribe((users:Array<User>) => {
-			this.users = users;
-		});
-	}
 }
