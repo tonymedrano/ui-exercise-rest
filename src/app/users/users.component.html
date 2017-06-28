@@ -2,24 +2,26 @@
     <div class="table-title">
         <h3>UI Exercise Users</h3>
     </div>
-    <table class="table-fill">
-        <thead>
-            <tr>
-                <th class="text-left">Id</th>
-                <th class="text-left">Name</th>
-                <th class="text-left">Date of Birthday</th>
-                <th class="text-left"><a routerLink="add" class="btn btn-default">Add User +</a></th>
-                <th class="text-left"></th>
-            </tr>
-        </thead>
-        <tbody class="table-hover">
-            <tr *ngFor="let user of users">
-                <td class="text-left">{{user.id}}</td>
-                <td class="text-left">{{user.name}}</td>
-                <td class="text-left">{{user.birthdate | date}}</td>
-                <td><a class="btn btn-primary" [routerLink]="['edit', user.id]">Editar</a></td>
-                <td><button (click)="delete(user.id)" class="btn btn-danger">Eliminar</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table-fill">
+            <thead>
+                <tr>
+                    <th class="text-left">Id</th>
+                    <th class="text-left">Name</th>
+                    <th class="text-left">Date of Birthday</th>
+                    <th class="text-left"><a routerLink="add" class="btn btn-default">Add User +</a></th>
+                    <th class="text-left"></th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                <tr *ngFor="let user of users">
+                    <td class="text-left">{{user.id}}</td>
+                    <td class="text-left">{{user.name}}</td>
+                    <td class="text-left">{{user.birthdate | date}}</td>
+                    <td><a class="btn btn-primary" [routerLink]="['edit', user.id]">Editar</a></td>
+                    <td><button (click)="delete(user.id)" class="btn btn-danger">Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
