@@ -4,7 +4,7 @@
             <h3>{{title}}</h3>
             <hr>
             <div class="form-container">
-                <form (submit)="saveUser(user, name.value, birthdate.value)" novalidate [formGroup]="userform">
+                <form (submit)="saveUser(name.value, birthdate.value)" novalidate [formGroup]="userform">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" placeholder="name" formControlName="name" #name [ngModel]="user.name" class="form-control" required />

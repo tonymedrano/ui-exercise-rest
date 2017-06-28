@@ -53,7 +53,7 @@ export class UserEditComponent implements OnInit {
 	}
 
 	//. Creación/ Actualización datos usurio.
-	saveUser(user:any, name:string, birthdate:string) {
+	saveUser(name:string, birthdate:string) {
 		let date = this.formatBirthDate(birthdate);
 		let userData:any = {name: name, birthdate: date};
 		if (this.isEDit)
@@ -71,7 +71,6 @@ export class UserEditComponent implements OnInit {
 	//. Utilidad: Formatea fecha para saveUser function.
 	formatBirthDate(date) {
 		let local = new Date(Date.parse(date));
-		console.log(local)
 		return local;
 	}
 

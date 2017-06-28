@@ -44,7 +44,7 @@ export class UserService {
         }).catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-	//. actualiza usuario.
+	//. actualiza usuario. 
     updateUser(user:any):Observable<Array<any>> {
         let body = JSON.stringify({
             name: user.name,
