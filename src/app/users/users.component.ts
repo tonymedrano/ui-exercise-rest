@@ -19,13 +19,17 @@ export class UsersComponent implements OnInit {
 
 	users: Array<User>; //. todos los usuarios.
 	subscription: Subscription;
+	isAppLoading:boolean = false;
 
-	constructor(private userService: UserService) {}
+	constructor(private userService: UserService) {
+		this.isAppLoading = true;
+	}
 
 	ngOnInit() {
 		this.users = [];
 		this.subscription = this.userService.getUserAll().subscribe((users:Array<User>) => {
 			this.users = users;
+			this.isAppLoading = false;
 		});
 	}
 

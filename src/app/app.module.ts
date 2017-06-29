@@ -9,6 +9,9 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { AppComponent } from './app.component';
 import { BirthDatePipe } from './birthdate.pipe';
 
+//. Loading Spinner
+import { LoadingOverlay } from './loading/loading-overlay.component';
+
 //. navegación
 import { AppRoutingModule, routedComponents } from './app.route';
 
@@ -19,6 +22,7 @@ import { UserService, User } from './service/index';
   declarations: [
     AppComponent,
     routedComponents,
+    LoadingOverlay,
     BirthDatePipe
   ],
   imports: [

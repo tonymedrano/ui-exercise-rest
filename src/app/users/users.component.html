@@ -2,6 +2,11 @@
     <div class="table-title">
         <h3>UI Exercise Users</h3>
     </div>
+    <div *ngIf="isAppLoading" class="full-screen zIndex-10--loadingPage">
+    <div class="centered-spinner-image">
+        <img src="assets/images/ajax-loader.gif" />
+    </div>
+    </div>
     <div class="table-responsive">
         <table class="table-fill">
             <thead>

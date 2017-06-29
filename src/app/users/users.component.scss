@@ -112,3 +112,27 @@ td {
         text-align: right;
     }
 }
+.ui-growl-item-container {
+    /* background-color: #BBB; */
+    opacity: initial;
+}
+
+.full-screen {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: .8;
+    background-color: #AAAAAA;
+}
+
+.zIndex-10--loadingPage {
+    z-index: 10000;
+}
+
+.centered-spinner-image {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
