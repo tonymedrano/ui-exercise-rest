@@ -5,10 +5,9 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class UserService {
-    isAppLoading: boolean;
+    
 	constructor(private http: Http) {
         this.http = http;
-        this.isAppLoading = false;
     }
 
 	//. Lista completa de usuarios.

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { fadeInAnimation } from '../animations/index';
@@ -25,7 +25,6 @@ export class UsersComponent implements OnInit {
 
 	constructor(private userService: UserService, public toastr: ToastsManager, vcr: ViewContainerRef) {
 		this.toastr.setRootViewContainerRef(vcr);
-		this.loading = false;
 	}
 
 	ngOnInit() {

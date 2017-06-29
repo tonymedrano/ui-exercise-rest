@@ -30,7 +30,6 @@ export class UserEditComponent implements OnInit {
 		public toastr: ToastsManager,
 		public vcr: ViewContainerRef) {
 		this.toastr.setRootViewContainerRef(vcr);
-		this.userService.isAppLoading = this.loading;
 		this.loading = false;
 	}
 
@@ -55,10 +54,10 @@ export class UserEditComponent implements OnInit {
 	}
 
 	//. Creación/ Actualización datos usurio.
-	saveUser(name:string, birthdate:string) {
+	saveUser(name: string, birthdate: string) {
 		this.loading = true;
 		let date = this.formatBirthDate(birthdate);
-		let userData:any = {name: name, birthdate: date};
+		let userData: any = { name: name, birthdate: date };
 		if (this.isEDit)
 			this.userService.updateUser(userData).subscribe((user: Array<User>) => {
 				this.user = user;

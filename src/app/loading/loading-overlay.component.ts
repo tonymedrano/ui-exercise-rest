@@ -1,14 +1,14 @@
-import { Component, Input, Injectable } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'loading-overlay',
-  template: `
+    selector: 'loading-overlay',
+    template: `
     <div *ngIf="loading" class="loading zIndex-loading">
         <div class="centered-spinner-image">
             <img src="assets/images/ajax-loader.gif" />
         </div>
     </div>`,
-  styles: [`
+    styles: [`
     .loading {
         position: fixed;
         height: 100%;
@@ -32,6 +32,14 @@ import { Component, Input, Injectable } from '@angular/core';
 })
 
 export class LoadingOverlay {
-  @Input()
-  loading: boolean;
+
+    private _load: boolean;
+    @Input()
+    get loading(): boolean {
+        return this._load;
+    }
+
+    set loading(value: boolean) {
+        this._load = value;
+    }
 }
