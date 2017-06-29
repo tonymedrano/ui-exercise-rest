@@ -59,12 +59,16 @@ export class UserEditComponent implements OnInit {
 		if (this.isEDit)
 			this.userService.updateUser(userData).subscribe((user: Array<User>) => {
 				this.user = user;
-				this.message(user);
+				this.showSuccess();
+			}, (error) => {
+				this.showError();
 			});
 		else
 			this.userService.createUser(userData).subscribe((user: Array<User>) => {
 				this.user = user;
-				this.message(user);
+				this.showSuccess();
+			}, (error) => {
+				this.showError();
 			});
 	}
 
@@ -72,14 +76,6 @@ export class UserEditComponent implements OnInit {
 	formatBirthDate(date) {
 		let local = new Date(Date.parse(date));
 		return local;
-	}
-
-	//. Utilidad: Muestra mensajes (Toast).
-	message(user: any) {
-		if (user !== null || user.length != 0)
-			return this.showSuccess();
-		else
-			return this.showError();
 	}
 
 	//. Utilidad: Mensaje ok de message function.
@@ -94,6 +90,6 @@ export class UserEditComponent implements OnInit {
 
 	//. Utilidad: Mensaje error de message function.
 	showError() {
-		this.toastr.error('No user created!', 'Oops!');
+		this.toastr.error('Server Error:  try later!', 'Oops!');
 	}
 }
