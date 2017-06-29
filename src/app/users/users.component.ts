@@ -21,18 +21,19 @@ export class UsersComponent implements OnInit {
 
 	users: Array<User>; //. todos los usuarios.
 	subscription: Subscription;
-	isAppLoading: boolean = false;
+	loading: boolean;
 
 	constructor(private userService: UserService, public toastr: ToastsManager, vcr: ViewContainerRef) {
 		this.toastr.setRootViewContainerRef(vcr);
-		this.isAppLoading = true;
+		this.loading = false;
 	}
 
 	ngOnInit() {
+		this.loading = true;
 		this.users = [];
 		this.subscription = this.userService.getUserAll().subscribe((users: Array<User>) => {
+			this.loading = false;
 			this.users = users;
-			this.isAppLoading = false;
 		});
 	}
 
@@ -41,6 +42,7 @@ export class UsersComponent implements OnInit {
 	}
 
 	delete(id: number) {
+		this.loading = true;
 		this.userService.deleteUser(id).subscribe((users: Array<User>) => {
 			this.users = users;
 			this.showSuccess();
@@ -51,11 +53,13 @@ export class UsersComponent implements OnInit {
 
 	//. Utilidad: Mensaje ok de message function.
 	showSuccess() {
+		this.loading = false;
 		this.toastr.success('User deleted!', 'Success!');
 	}
 
 	//. Utilidad: Mensaje error de message function.
 	showError() {
+		this.loading = false;
 		this.toastr.error('Server Error:  try later!', 'Oops!');
 	}
 }

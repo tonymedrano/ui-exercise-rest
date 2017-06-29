@@ -1,19 +1,37 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, Injectable } from '@angular/core';
 
 @Component({
   selector: 'loading-overlay',
   template: `
-    <div class="bg-loading" *ngIf="isLoading">
-     <div class="fa fa-spinner fa-spin"></div> procesando...
+    <div *ngIf="loading" class="loading zIndex-loading">
+        <div class="centered-spinner-image">
+            <img src="assets/images/ajax-loader.gif" />
+        </div>
     </div>`,
   styles: [`
-    .bg-loading{
-      position: absolute;
+    .loading {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: .8;
+        background-color: #AAAAAA;
+    }
+
+    .zIndex-loading {
+        z-index: 10000;
+    }
+
+    .centered-spinner-image {
+        position: absolute;
+        top: 45%;
+        left: 45%;
     }
     `]
 })
 
 export class LoadingOverlay {
-  @Input()    
-  isLoading: boolean;
+  @Input()
+  loading: boolean;
 }

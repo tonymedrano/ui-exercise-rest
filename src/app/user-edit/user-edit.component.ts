@@ -21,15 +21,17 @@ export class UserEditComponent implements OnInit {
 	isEDit: boolean = false;
 	userform: FormGroup;
 	dateofbirth: string;
-
+	loading: boolean;
 
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
 		private userService: UserService,
 		public toastr: ToastsManager,
-		vcr: ViewContainerRef) {
+		public vcr: ViewContainerRef) {
 		this.toastr.setRootViewContainerRef(vcr);
+		this.userService.isAppLoading = this.loading;
+		this.loading = false;
 	}
 
 	ngOnInit() {
@@ -54,6 +56,7 @@ export class UserEditComponent implements OnInit {
 
 	//. Creación/ Actualización datos usurio.
 	saveUser(name:string, birthdate:string) {
+		this.loading = true;
 		let date = this.formatBirthDate(birthdate);
 		let userData:any = {name: name, birthdate: date};
 		if (this.isEDit)
@@ -80,6 +83,7 @@ export class UserEditComponent implements OnInit {
 
 	//. Utilidad: Mensaje ok de message function.
 	showSuccess() {
+		this.loading = false;
 		this.toastr.success('User created!', 'Success!', { dismiss: 'controlled' }).then((toast: any) => {
 			setTimeout(() => {
 				//  this.toastr.dismissToast(toast);
@@ -90,6 +94,7 @@ export class UserEditComponent implements OnInit {
 
 	//. Utilidad: Mensaje error de message function.
 	showError() {
+		this.loading = false;
 		this.toastr.error('Server Error:  try later!', 'Oops!');
 	}
 }
