@@ -33,13 +33,5 @@ import { Component, Input } from '@angular/core';
 
 export class LoadingOverlay {
 
-    private _load: boolean;
-    @Input()
-    get loading(): boolean {
-        return this._load;
-    }
-
-    set loading(value: boolean) {
-        this._load = value;
-    }
+    @Input() loading: boolean;
 }

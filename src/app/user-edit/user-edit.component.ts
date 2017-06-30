@@ -21,6 +21,7 @@ export class UserEditComponent implements OnInit {
 	isEDit: boolean = false;
 	userform: FormGroup;
 	dateofbirth: string;
+
 	loading: boolean;
 
 	constructor(
